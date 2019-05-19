@@ -1,19 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// Components
-import { HomeComponent } from './components/home/home.component';
-
-const routes: Routes = [{
-  path: '',
-  component: HomeComponent
-}, {
+const routes: Routes = [
+{
   path: 'items',
   loadChildren: './search/search.module#SearchModule'
 },
 {
   path: '**',
-  redirectTo: 'home',
+  redirectTo: '',
   pathMatch: 'full'
 }];
 
