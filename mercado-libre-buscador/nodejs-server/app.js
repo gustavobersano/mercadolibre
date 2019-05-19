@@ -32,12 +32,19 @@ app.use(function (err, req, res, next) {
     res.send(err.status);
 });
 
+// Connet with MondoDB
 
+/*
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://user:1357924680@mercado-libre-buscador-rev4d.mongodb.net/test?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(
     () => {
+        const col = client.db(_DBNAME).collection('item');
+        col.find({}).toArray(function (err, items) {
+            console.log(items);
+        });
+
         console.log('connection successful')
     },
     (err) => {
@@ -46,5 +53,17 @@ client.connect(
         // perform actions on the collection object
         client.close();
     });
-
+*/
+const dbname = "mercado-libre-buscador";
+const mongoose = require('mongoose');
+const connDB = "mongodb+srv://user:1357924680@mercado-libre-buscador-rev4d.mongodb.net/test";
+mongoose.connect(connDB, {
+    dbName: dbname,
+    useNewUrlParser: true,
+    promiseLibrary: require('bluebird')
+})
+    .then(() => {
+        console.log('connection successful');
+    })
+    .catch((err) => console.error(err));
 module.exports = app;
