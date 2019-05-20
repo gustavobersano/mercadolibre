@@ -1,5 +1,21 @@
-<p>
-  searching-bar works!
-</p>
-<router-outlet></router-outlet>
-
+<div class="d-flex flex-row align-items-center general">
+  <div class="d-flex offset-sm-1 col-xs-1 image">
+    <img src="/assets/image/Logo_ML.png" alt="Logo Mercado Libre" srcset="/assets/image/Logo_ML.png 2x"
+      class="logo d-flex">
+  </div>
+  <!--<form [formGroup]="formSearch" (ngSubmit)="onSubmit()" class="d-flex col-11">
+    <input matInput formControlName="data" placeholder="Nunca dejes de buscar" type="text" class="input">
+    <button type="submit">
+      <img src="/assets/image/ic_Search.png" alt="Logo Mercado Libre" srcset="/assets/image/ic_Search.png 2x">
+    </button>
+  </form>-->
+  <form [formGroup]="formSearch" class="d-flex col-xs-9 formulario">
+    <div class="input-group col-sm-12">
+      <input type="text" class="form-control" placeholder="Nunca dejes de buscar" aria-label="Nunca dejes de buscar"
+        aria-describedby="basic-addon1" class="input">
+      <button type="submit" class="search-button">
+        <img class="input-group-addon" src="/assets/image/ic_Search.png" alt="Logo Mercado Libre" srcset="/assets/image/ic_Search.png 2x">
+      </button>
+    </div>
+  </form>
+</div>

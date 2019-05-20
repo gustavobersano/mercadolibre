@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-searching-bar',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchingBarComponent implements OnInit {
 
+  private formSearch: FormGroup;
+
   constructor() { }
 
   ngOnInit() {
+    this.formSearch = new FormGroup({
+      data: new FormControl('')
+    });
+  }
+
+  onSubmit() {
   }
 
 }
