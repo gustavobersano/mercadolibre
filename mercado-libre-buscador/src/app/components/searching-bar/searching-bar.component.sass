@@ -6,15 +6,43 @@
         .logo
             height: 100%
     .formulario
-        padding: 10px
-        .input
-            font-size: 18px
-            padding: 7px 60px 9px 15px
-            width: calc(100% - 40px)
-        .search-button
-            width: 40px
+        padding: 0px
+        .container-fluid
+            padding: 10px 10px 10px 0px
+            .input
+                font-size: 18px
+                padding: 7px 15px 9px 15px
+                width: calc(100% - 50px)
+                border: 0px
+                border-radius: 4px 0 0 4px
+            ::placeholder
+                color: #999999
+            .search-button
+                width: 50px
+                border: 0px
+                border-radius: 0 4px 4px
+                background-color: #EEEEEE
+                .image
+                    width: 100%
+                    padding: 8px
+                
 
-//@media (min-width: 1024px)
-//    .input
-//        font-size: 18px
-//        padding: 7px 60px 9px 15px
+@media (max-width: 460px)
+    .general
+        .image
+            .logo
+                height: 75%
+        .formulario
+            .container-fluid
+                .input
+                    padding: 7px 5px 9px 5px
+
+@media (max-width: 375px)
+    .general
+        .image
+            .logo
+                height: 55%
+        .formulario
+            .container-fluid
+                .input
+                    padding: 7px 5px 9px 5px
