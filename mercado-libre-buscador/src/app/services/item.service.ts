@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
     constructor(private http: HttpClient) {}
   
     getItems(query): Observable<any> {
-      const endpoint = `sites/MLA/search?q=​:${query}`;
+      const endpoint = `items?q=​:${query}`;
       return this.http.get<any>(endpoint);
     }
   

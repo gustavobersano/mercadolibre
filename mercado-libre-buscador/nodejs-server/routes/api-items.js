@@ -8,7 +8,7 @@ const urlBase = 'https://api.mercadolibre.com';
 
 
 /* GET ALL ITEMS */
-router.get('/sites/MLA/search', function (req, res, next) {
+router.get('/items', function (req, res, next) {
   //const path = '/sites/MLA/search'
   //let urlComplete = urlBase.concat(path).concat('?q=').concat(req.query.q);
   //let urlComplete = urlBase + path + '?q=' + req.query.q;
