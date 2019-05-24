@@ -32,38 +32,15 @@ app.use(function (err, req, res, next) {
     res.send(err.status);
 });
 
-// Connet with MondoDB
+// Configurar cabeceras y cors
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
 
-/*
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://user:1357924680@mercado-libre-buscador-rev4d.mongodb.net/test?retryWrites=true";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(
-    () => {
-        const col = client.db(_DBNAME).collection('item');
-        col.find({}).toArray(function (err, items) {
-            console.log(items);
-        });
+console.log("Server OnLine.");
 
-        console.log('connection successful')
-    },
-    (err) => {
-        console.log(err)
-        const collection = client.db("test").collection("devices");
-        // perform actions on the collection object
-        client.close();
-    });
-*/
-const dbname = "mercado-libre-buscador";
-const mongoose = require('mongoose');
-const connDB = "mongodb+srv://user:1357924680@mercado-libre-buscador-rev4d.mongodb.net/test";
-mongoose.connect(connDB, {
-    dbName: dbname,
-    useNewUrlParser: true,
-    promiseLibrary: require('bluebird')
-})
-    .then(() => {
-        console.log('connection successful');
-    })
-    .catch((err) => console.error(err));
 module.exports = app;
