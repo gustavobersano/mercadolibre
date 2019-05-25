@@ -2,41 +2,44 @@ let express = require('express');
 let router = express.Router();
 let request = require('request');
 
-const urlBase = 'https://api.mercadolibre.com/';
+
+const itemService = require('../services/item.service');
+const item = require('../core/item');
+const itemList = require('../core/itemList');
+
+
+const urlBase = 'https://api.mercadolibre.com';
 
 /* GET SINGLE ITEM BY ID */
 router.get('/items/:id', function (req, res, next) {
 
-  const myURL = new URL(urlBase + "items/" + req.params.id);
-
-  request(myURL.toString(), function (error, response, body) {
-    res.json({
-      body: JSON.parse(body),
-    });
-  });
-  //req.params.id
-  //var theUrl = "https://api.mercadolibre.com/items/MLA670899102";
+  Promise.all([itemService.itemsByIdPromise(req.params.id), itemService.descriptionitemsByIdPromise(req.params.id)])
+    .then(
+      responseAll => {
+        Promise.all([itemService.currencyByIdPromise(responseAll[0].currency_id)]).then(
+          response => {
+            res.json(
+              item.newItem({
+                item: responseAll[0],
+                description: responseAll[1],
+                currency: response[0]
+              })
+            )
+          }
+        );
+      }
+    );
 
 });
 
 /* GET ITEMS BY QUERY */
 router.get('/items', function (req, res, next) {
-
-  const myURL = new URL(urlBase + "sites/MLA/search?q=" + req.query.q);
-
-  request(myURL.toString(), function (error, response, body) {
-    res.json({
-      body: JSON.parse(body),
-    });
+  const url = new URL(`${urlBase}/sites/MLA/search?q=${req.query.q}`);
+  request(url.toString(), function (error, response, bodyQuery) {
+    res.json(
+      itemList.newItemList(JSON.parse(bodyQuery))
+    );
   });
 });
 
-
-
 module.exports = router;
-
-// Para obtener las categorias https://api.mercadolibre.com/sites/MLA/
-  /*
-/categories X
-  */
-  // https://developers.mercadolibre.com.ar/es_ar/usuarios-y-aplicaciones/

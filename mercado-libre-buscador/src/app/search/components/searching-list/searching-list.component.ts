@@ -20,12 +20,13 @@ export class SearchingListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.query = "mesa";
+    
+    this.query = "celular";
     this.apiItemService.getItems(this.query).subscribe(response => {
       console.log(response);
     });
-
-    this.apiItemService.getItemById('MLA670899102').subscribe(response => {
+    
+    this.apiItemService.getItemById('MLA784888492').subscribe(response => {
       console.log(response);
     });
   }
