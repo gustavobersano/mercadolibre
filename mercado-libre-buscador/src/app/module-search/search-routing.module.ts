@@ -8,7 +8,7 @@ const routes: Routes = [{
     component: SearchingListComponent
 }, {
     path: ':id',
-    loadChildren: '../product/product.module#ProductModule'
+    loadChildren: '../module-product/product.module#ProductModule'
 }];
 
 @NgModule({

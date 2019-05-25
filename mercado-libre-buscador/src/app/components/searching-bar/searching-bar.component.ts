@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 // Services
-import { SearchService } from '../../shared/services/search.service';
+import { SearchService } from '../../module-shared/services/search.service';
 
 @Component({
   selector: 'app-searching-bar',

@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Models
-import { Item } from '../../../shared/models/models';
+import { Item } from '../../../module-shared/models/models';
 
 
 @Component({

@@ -29,7 +29,6 @@ module.exports = {
         let items = [];
         // Se recorren los resultados y se genera la lista de items
         data.results.forEach(item => {
-            console.log(item.address);
             items.push(
                 {
                     id: item.id || '',

@@ -5,16 +5,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 // Modules
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
+import { SharedModule } from './module-shared/shared.module';
 // Components
 import { AppComponent } from './app.component';
 import { SearchingBarComponent } from './components/searching-bar/searching-bar.component';
 import { HomeComponent } from './components/home/home.component';
 
 // Services
-import { ItemService } from './shared/services/item.service';
-import { AuthInterceptor } from './shared/services/authInterceptor';
-import { SearchService } from './shared/services/search.service';
+import { ItemService } from './module-shared/services/item.service';
+import { AuthInterceptor } from './module-shared/services/authInterceptor';
+import { SearchService } from './module-shared/services/search.service';
 
 @NgModule({
   declarations: [

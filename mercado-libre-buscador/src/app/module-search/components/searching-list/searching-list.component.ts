@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 // Services
-import { ItemService } from '../../../shared/services/item.service';
-import { SearchService } from '../../../shared/services/search.service';
+import { ItemService } from '../../../module-shared/services/item.service';
+import { SearchService } from '../../../module-shared/services/search.service';
 // Models
-import { ItemList } from '../../../shared/models/models';
+import { ItemList } from '../../../module-shared/models/models';
 
 @Component({
   selector: 'app-searching-list',

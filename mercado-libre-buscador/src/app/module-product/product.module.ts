@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ProductComponent } from './components/product/product.component';
 // Modules
 import { AppRoutingProductModule } from './product-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../module-shared/shared.module';
 
 @NgModule({
   declarations: [

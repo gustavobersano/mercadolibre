@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
 {
   path: 'items',
-  loadChildren: './search/search.module#SearchModule'
+  loadChildren: './module-search/search.module#SearchModule'
 },
 {
   path: '**',
