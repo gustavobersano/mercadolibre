@@ -1,10 +1,15 @@
-<div class="container-fluid">
-  <img [src]=test alt="Imagen del Producto" class="image">
+<div class="d-flex flex-row" (click)="onClick(item?.id)">
+  <img [src]=item?.picture alt="Imagen del Producto" class="image">
   <div class="details d-flex flex-column">
     <div class="primary-line d-flex justify-content-between">
-        <span class="amount">$ 1.800</span>
-        <span class="d-flex align-items-end city">Capital Federal</span>
+      <span class="d-flex col-7 amount">
+        {{ item?.price?.amount | currency:item?.price?.currency:'symbol-narrow':'1.0-0' | replace:'.':',' }}
+        <div *ngIf="item.free_shipping" class='d-flex align-items-center imageShipping'>
+          <img class="d-flex img-fluid" src="/assets/image/ic_shipping.png" alt="Logo Free Shipping" srcset="/assets/image/ic_shipping.png 2x">
+        </div>
+      </span>
+      <span class="d-flex offset-md-1 col-4 align-items-end city">{{ item?.state_name }}</span>
     </div>
-    <span class="description">Apple Ipod 5g 16gb Leon</span>
+    <span class="description">{{ item?.title }}</span>
   </div>
 </div>

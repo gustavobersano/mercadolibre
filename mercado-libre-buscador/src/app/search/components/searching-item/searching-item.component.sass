@@ -1,3 +1,5 @@
+@import "../../../../variables.sass"
+
 .image
     height: 180px
     width: 180px
@@ -10,6 +12,22 @@
     .primary-line
         margin: 32px 0px
         .amount
+            color: $amount
             font-size: 24px
+            padding: 0
+            
+            display: inline-block
+            padding-right: 0.3em
+            
+            .imageShipping
+                padding-left: 5px
+                width: 5%
+                img
+                    width: 100%
+                    display: block
         .city
+            color: $backGrey
             font-size: 12px
+    .description
+        color: $amount
+        margin-right: 15px

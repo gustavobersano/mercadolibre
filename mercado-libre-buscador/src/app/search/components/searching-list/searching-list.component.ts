@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 // Services
-import { ItemService } from '../../../services/item.service';
-import { SearchService } from '../../../services/search.service';
+import { ItemService } from '../../../shared/services/item.service';
+import { SearchService } from '../../../shared/services/search.service';
 // Models
-import { Item } from '../../../models/models';
+import { ItemList } from '../../../shared/models/models';
 
 @Component({
   selector: 'app-searching-list',
@@ -14,7 +14,7 @@ import { Item } from '../../../models/models';
 })
 export class SearchingListComponent implements OnInit {
 
-  private items: Array<Item>;
+  private items: Array<ItemList>;
   private subscription: Subscription;
 
   constructor(
@@ -27,24 +27,24 @@ export class SearchingListComponent implements OnInit {
     const query = this.searchService.getQuery();
     if (query !== '') {
       this.apiItemService.getItems(query).subscribe(response => {
-        console.log(response);
+        this.items = response.items;
       });
     }
-
 
     this.subscription = this.searchService.changeSearch.subscribe(
       (query) => {
         if (query !== '') {
           this.apiItemService.getItems(query).subscribe(response => {
-            console.log(response);
+            this.items = response.items;
           });
         }
       }
     );
-    
+    /*
     this.apiItemService.getItemById('MLA784888492').subscribe(response => {
       console.log(response);
     });
+    */
   }
 
 }

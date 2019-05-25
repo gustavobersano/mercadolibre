@@ -14,6 +14,7 @@ interface ItemList {
     picture: String,
     condition: String,
     free_shipping: Boolean
+    state_name: String
 }
 
 interface List {

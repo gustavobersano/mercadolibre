@@ -1,22 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-// Routing Module
+// Modules
 import { AppRoutingModule } from './app-routing.module';
-// Material
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { SharedModule } from './shared/shared.module';
 // Components
 import { AppComponent } from './app.component';
 import { SearchingBarComponent } from './components/searching-bar/searching-bar.component';
 import { HomeComponent } from './components/home/home.component';
+
 // Services
-import { ItemService } from './services/item.service';
-import { AuthInterceptor } from './services/authInterceptor';
-import { SearchService } from './services/search.service';
+import { ItemService } from './shared/services/item.service';
+import { AuthInterceptor } from './shared/services/authInterceptor';
+import { SearchService } from './shared/services/search.service';
 
 @NgModule({
   declarations: [
@@ -26,13 +24,11 @@ import { SearchService } from './services/search.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule
+    SharedModule
   ],
   providers: [
     ItemService,

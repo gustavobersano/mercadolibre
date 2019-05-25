@@ -1,3 +1,4 @@
-<div class="container-fluid d-flex offset-md-1 col-10">
-  <app-searching-item></app-searching-item>
+<div class="d-flex flex-column offset-md-1 col-md-10 list" *ngFor="let item of items">
+  <app-searching-item class="container-fluid" [item]=item></app-searching-item> 
+  <mat-divider class="divider"></mat-divider>
 </div>

@@ -1,7 +1,10 @@
 
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { Item } from '../../../models/models';
+// Models
+import { Item } from '../../../shared/models/models';
+
 
 @Component({
   selector: 'app-searching-item',
@@ -11,13 +14,14 @@ import { Item } from '../../../models/models';
 export class SearchingItemComponent implements OnInit {
 
   @Input() item: Item;
-  test: string;
 
-  constructor() { 
-    this.test = 'https://http2.mlstatic.com/funda-para-celular-D_NQ_NP_715251-MLM28149640451_092018-F.jpg';
-  }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  onClick(id: number) {
+    this.router.navigate(['items', id]);
   }
 
 }
