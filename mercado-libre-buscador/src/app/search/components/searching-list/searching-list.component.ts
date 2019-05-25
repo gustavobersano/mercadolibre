@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 // Services
 import { ItemService } from '../../../services/item.service';
+import { SearchService } from '../../../services/search.service';
 // Models
 import { Item } from '../../../models/models';
 
@@ -11,20 +14,33 @@ import { Item } from '../../../models/models';
 })
 export class SearchingListComponent implements OnInit {
 
-  @Input() query: String;
-
   private items: Array<Item>;
+  private subscription: Subscription;
 
   constructor(
-    private apiItemService: ItemService
+    private apiItemService: ItemService,
+    private searchService: SearchService
   ) { }
 
   ngOnInit() {
     
-    this.query = "celular";
-    this.apiItemService.getItems(this.query).subscribe(response => {
-      console.log(response);
-    });
+    const query = this.searchService.getQuery();
+    if (query !== '') {
+      this.apiItemService.getItems(query).subscribe(response => {
+        console.log(response);
+      });
+    }
+
+
+    this.subscription = this.searchService.changeSearch.subscribe(
+      (query) => {
+        if (query !== '') {
+          this.apiItemService.getItems(query).subscribe(response => {
+            console.log(response);
+          });
+        }
+      }
+    );
     
     this.apiItemService.getItemById('MLA784888492').subscribe(response => {
       console.log(response);

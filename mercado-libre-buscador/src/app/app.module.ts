@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 // Routing Module
 import { AppRoutingModule } from './app-routing.module';
 // Material
@@ -15,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 // Services
 import { ItemService } from './services/item.service';
 import { AuthInterceptor } from './services/authInterceptor';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { AuthInterceptor } from './services/authInterceptor';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -37,7 +40,8 @@ import { AuthInterceptor } from './services/authInterceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    SearchService
   ],
   bootstrap: [AppComponent]
 })

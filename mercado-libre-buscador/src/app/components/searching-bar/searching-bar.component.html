@@ -2,11 +2,11 @@
   <div class="d-flex align-items-center col-2 offset-md-1 col-md-1 image">
     <img src="/assets/image/Logo_ML.png" alt="Logo Mercado Libre" srcset="/assets/image/Logo_ML.png 2x" class="img-fluid logo">
   </div>
-  <form [formGroup]="formSearch" class="d-flex flex-column col-9 col-md-9 formulario">
+  <form [formGroup]="formSearch" class="d-flex flex-column col-9 col-md-9 formulario" (ngSubmit)="onSubmit()">
     <div class="container-fluid">
       <div class="input-group">
         <input type="text" placeholder="Nunca dejes de buscar" aria-label="Nunca dejes de buscar" aria-describedby="basic-addon1"
-          class="input">
+          class="input" formControlName="query">
         <button type="submit" class="search-button">
           <img src="/assets/image/ic_Search.png" alt="Logo Mercado Libre" srcset="/assets/image/ic_Search.png 2x" class="image">
         </button>

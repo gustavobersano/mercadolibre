@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+
+// Services
+import { SearchService } from '../../services/search.service';
+
 
 @Component({
   selector: 'app-searching-bar',
@@ -10,15 +15,21 @@ export class SearchingBarComponent implements OnInit {
 
   private formSearch: FormGroup;
 
-  constructor() { }
+  constructor(private router: Router,
+    private searchService: SearchService) { }
 
   ngOnInit() {
     this.formSearch = new FormGroup({
-      data: new FormControl('')
+      query: new FormControl('')
     });
   }
 
   onSubmit() {
+    let query = this.formSearch.controls['query'].value || '';
+    if (query !== '') {
+      this.searchService.setQuery(query);
+      this.router.navigate(['items']);
+    }
   }
 
 }
