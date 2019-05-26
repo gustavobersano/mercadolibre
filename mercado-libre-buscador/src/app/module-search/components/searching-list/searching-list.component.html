@@ -2,9 +2,9 @@
   <app-breadcrumb [categories]=breadcrumb></app-breadcrumb>
 </div>
 <div class="d-flex flex-column offset-md-1 col-md-10 list">
-  <ng-template [ngIf]="!loading" *ngFor="let item of items">
+  <ng-template [ngIf]="!loading" *ngFor="let item of items; index as i">
     <app-searching-item class="container-fluid" [item]=item></app-searching-item>
-    <mat-divider class="divider"></mat-divider>
+    <mat-divider *ngIf="i < items.length - 1" class="divider"></mat-divider>
   </ng-template>
   <ng-template [ngIf]="loading">
     <mat-spinner class="align-self-center spinner" [diameter]="25"></mat-spinner>
