@@ -22,7 +22,7 @@ export class SearchingListComponent implements OnInit, OnDestroy {
     private apiItemService: ItemService,
     private searchService: SearchService
   ) { 
-    this.loading = true;
+    this.loading = false;
   }
 
   ngOnInit() {

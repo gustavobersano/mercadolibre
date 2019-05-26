@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'mercado-libre-buscador';
+  lang: string;
+  constructor(
+    private translate: TranslateService
+  ) {
+    this.lang = 'es'; // this.translate.getBrowserLang();
+    this.translate.setDefaultLang(this.lang);
+    this.translate.use(this.lang);
+  }
 }

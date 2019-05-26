@@ -2,9 +2,14 @@
 .product
     background-color: $backList
     padding: 0
+    .image
+        padding: 15px 0 32px 0
     .title-description
         font-size: 28px
         padding: 0 0 32px 32px
+        color: $amount
+    .description
+        color: $placeholder
     .spinner
         margin: 15px
     .bloque-compra
@@ -12,13 +17,15 @@
         .detalle-superior
             font-size: 14px
             padding-bottom: 16px
+            color: $amount
         .title
             font-size: 24px
-            width: 60%
+            color: $amount
             font-weight: bold
         .amount
             font-size: 46px
             padding: 32px 0
+            color: $amount
         .button
             color: $backList
             background-color: $buttonBuy
@@ -27,18 +34,20 @@
             border-radius: 8px
             margin-bottom: 32px
 
-@media (max-width: 1199px)
+@media (max-width: 992px)
     .product
+        .image
+            padding: 15px 0 0 0
         .bloque-compra
-            .title
-                width: 80%
             .button
                 width: 70%
 
-@media (max-width: 767px)
+@media (max-width: 576px)
     .product
-        .bloque-compra
-            .title
-                width: 90%
-            .button
-                width: 80%
+        .title-description
+            font-size: 24px
+
+@media (max-width: 320px)
+    .product
+        .title-description
+            font-size: 20px

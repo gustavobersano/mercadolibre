@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { TranslateModule } from '@ngx-translate/core';
 // Material
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,13 +9,16 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // Pipes
 import { FormatCurrencyPipe } from './pipes/formatCurrency.pipe';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
-    FormatCurrencyPipe
+    FormatCurrencyPipe,
+    BreadcrumbComponent
   ],
   imports: [
     CommonModule,
+    TranslateModule.forChild(),
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -23,12 +26,13 @@ import { FormatCurrencyPipe } from './pipes/formatCurrency.pipe';
     MatProgressSpinnerModule
   ],
   exports: [
+    FormatCurrencyPipe,
+    BreadcrumbComponent,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
     MatProgressSpinnerModule,
-    FormatCurrencyPipe
   ]
 })
 export class SharedModule { }

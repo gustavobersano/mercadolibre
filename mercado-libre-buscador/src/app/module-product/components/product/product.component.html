@@ -1,20 +1,20 @@
 <div class="d-flex flex-column offset-md-1 col-md-10 product">
   <div *ngIf="!loading">
-    <div class="container-fluid d-flex flex-wrap justify-content-between">
-      <div>
+    <div class="container-fluid d-flex flex-column flex-lg-row justify-content-between">
+      <div class="image">
         <img [src]=item?.picture alt="Imagen del Producto" class="img-fluid">
       </div>
-      <div class="bloque-compra">
-        <div class="detalle-superior">{{item?.condition}} - {{item?.sold_quantity}} vendidos</div>
+      <div class="bloque-compra d-flex flex-column offset-lg-2">
+        <div class="detalle-superior">{{ item?.condition | translate }} - {{ item?.sold_quantity }} {{ (item?.sold_quantity > 1? "solds":"sold") | translate }}</div>
         <div class="title">{{item?.title}}</div>
         <div class="amount">
           {{ item?.price?.amount | currency:item?.price?.currency:'symbol-narrow':'1.0-0' | formatCurrency }}
         </div>
-        <button mat-raised-button color="primary" class="button">Comprar</button>
+        <button mat-raised-button color="primary" class="button">{{ "comprar" | translate }}</button>
       </div>
     </div>
     <div class="container-fluid">
-      <div class="title-description">Description del Producto</div>
+      <div class="title-description">{{ "title_description" | translate }}</div>
       <span class="description">{{ item.description }}</span>
     </div>
   </div>

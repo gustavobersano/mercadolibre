@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 // Components
 import { ProductComponent } from './components/product/product.component';
 // Modules
@@ -12,6 +13,7 @@ import { SharedModule } from '../module-shared/shared.module';
   ],
   imports: [
     CommonModule,
+    TranslateModule.forChild(),
     AppRoutingProductModule,
     SharedModule
   ]

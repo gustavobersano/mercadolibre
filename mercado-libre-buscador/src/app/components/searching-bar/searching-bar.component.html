@@ -5,7 +5,7 @@
   <form [formGroup]="formSearch" class="d-flex flex-column col-9 col-md-9 formulario" (ngSubmit)="onSubmit()">
     <div class="container-fluid">
       <div class="input-group">
-        <input type="text" placeholder="Nunca dejes de buscar" aria-label="Nunca dejes de buscar" aria-describedby="basic-addon1"
+        <input type="text" placeholder="{{ 'seguir_buscando' | translate }}" aria-label="Campo de entrada para buscar." aria-describedby="basic-addon1"
           class="input" formControlName="query">
         <button type="submit" class="search-button">
           <img src="/assets/image/ic_Search.png" alt="Logo Mercado Libre" srcset="/assets/image/ic_Search.png 2x" class="image">
