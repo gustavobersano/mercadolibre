@@ -1,14 +1,30 @@
 module.exports = {
 
-    getCategoriesIds: (data) => {
-        // Se inicializa una lista de ID's vacia
-        let categoriesId = [];
-        // Se cargan todos los ID del resultado de la búsqueda
-        data.results.forEach(element => {
-            categoriesId.push(element.category_id);
+    getCategories: (data) => {
+        let categories = [];
+        const categoriesAvailables = data.available_filters.find((filter) => {
+            return filter.id == 'category';
         });
-        // Se eliminan repetidos
-        return categoriesId = [...new Set(categoriesId)];
+        if (categoriesAvailables) {
+            // Se consideran unicamente los primeros 4 resultados
+            for (let index = 0; index < categoriesAvailables.values.length && index < 4; index++) {
+                const element = categoriesAvailables.values[index];
+                categories.push(element.name);
+            }
+        } else {
+            // Se obtienen las categorías filtradas
+            const categoriesFilter = data.filters.find((filter) => {
+                return filter.id == 'category';
+            });
+            if (categoriesFilter) {
+                // Se consideran unicamente los primeros 4 resultados
+                for (let index = 0; index < categoriesFilter.values.length && index < 4; index++) {
+                    const element = categoriesFilter.values[index];
+                    categories.push(element.name);
+                } 
+            }
+        }
+        return categories;
     }
     
 }

@@ -4,26 +4,11 @@ module.exports = {
     newItemList: (data) => {
         let list = [];
 
-        // Se consideran unicamente los primeros 4 resultados
+        // Se limita la respuesta a los primeros 4 aciertos
         data.results = data.results.slice(0, 4);
 
-        let categoriesId = categoriesTools.getCategoriesIds(data);
-        // Se inicializa una lista de nombres de categorias vacía
-        let categories = [];
-        categoriesId.forEach(categoryId => {
-            // Se busca el nombre en la tabla de filtros habilitados
-            const categotiesAvailable = data.available_filters.find((filter) => {
-                return filter.id == 'category';
-            });
-            if (categotiesAvailable) {
-                const category = categotiesAvailable.values.find((catFilter) => {
-                    return catFilter.id == categoryId;
-                });
-                if (category) {
-                    categories.push(category.name);
-                }
-            }
-        });
+        // Se consideran unicamente los primeros 4 resultados
+        let categories = categoriesTools.getCategories(data);
 
         // Se inicializa una lista de Items vacia
         let items = [];
@@ -36,7 +21,7 @@ module.exports = {
                     price: {
                         currency: item.currency_id || '',
                         amount: item.price || 0,
-                        decimals: 0 // Pendiente recuperar a partir de la moneda
+                        decimals: 0 // TODO: Pendiente recuperar a partir de la moneda
                     },
                     picture: item.thumbnail || '',
                     condition: item.condition || '',

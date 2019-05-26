@@ -15,6 +15,7 @@ import { ItemList } from '../../../module-shared/models/models';
 export class SearchingListComponent implements OnInit, OnDestroy {
 
   private items: Array<ItemList>;
+  private breadcrumb: Array<String>;
   private subscription: Subscription;
   private loading: boolean;
 
@@ -30,8 +31,11 @@ export class SearchingListComponent implements OnInit, OnDestroy {
     const query = this.searchService.getQuery();
     if (query !== '') {
       this.loading = true;
+      this.items = [];
+      this.breadcrumb = [];
       this.apiItemService.getItems(query).subscribe(response => {
         this.items = response.items;
+        this.breadcrumb = response.categories;
         this.loading = false;
       });
     }
@@ -40,8 +44,11 @@ export class SearchingListComponent implements OnInit, OnDestroy {
       (query) => {
         if (query !== '') {
           this.loading = true;
+          this.items = [];
+          this.breadcrumb = [];
           this.apiItemService.getItems(query).subscribe(response => {
             this.items = response.items;
+            this.breadcrumb = response.categories;
             this.loading = false;
           });
         }

@@ -28,7 +28,6 @@ export class ProductComponent implements OnInit {
       this.apiItemService.getItemById(this.id).subscribe(response => {
         this.item = response.item;
         this.loading = false;
-        console.log(this.item);
       });
     }
 

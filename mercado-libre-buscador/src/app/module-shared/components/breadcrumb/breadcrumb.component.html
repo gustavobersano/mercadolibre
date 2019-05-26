@@ -1,3 +1,11 @@
+<div class="d-flex flex-wrap bread">
+  <div *ngFor="let category of categories; index as i" [ngClass]="{'last': i == (categories.length - 1)}" class="item">
+    {{ category }}
+    <ng-template [ngIf]="i < categories.length - 1">&nbsp;>&nbsp;</ng-template>
+  </div>
+</div>
+<!--
 <p class="bread">
-  Electrónica, Audio  y Video > iPod > Reproductores > iPod touch > 32 GB
+  Electrónica, Audio  y Video > iPod > Reproductores > iPod touch > <b>32 GB</b>
 </p>
+-->
