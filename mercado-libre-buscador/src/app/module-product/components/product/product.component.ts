@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 // Services
 import { ItemService } from '../../../module-shared/services/item.service';
+import { SearchService } from '../../../module-shared/services/search.service';
 // Models
 import { Item } from '../../../module-shared/models/models';
 // Others
@@ -16,14 +17,19 @@ export class ProductComponent implements OnInit {
 
   private id: String;
   private item: Item;
+  private breadcrumb: Array<String>;
   private loading: boolean;
 
   constructor(private route: ActivatedRoute,
-    private apiItemService: ItemService) {
+    private apiItemService: ItemService,
+    private searchService: SearchService) {
     this.loading = true;
   }
 
   ngOnInit() {
+    const lastResult = this.searchService.getLastResult();
+    this.breadcrumb = _.get(lastResult, ['categories'], []);
+
     this.id = _.get(this.route, ['parent', 'params', 'value', 'id'], '')
     if (this.id != '') {
       this.loading = true;
