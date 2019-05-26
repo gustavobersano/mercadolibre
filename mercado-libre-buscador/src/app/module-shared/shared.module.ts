@@ -6,26 +6,29 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // Pipes
-import { ReplacePipe } from './pipes/replace.pipe';
+import { FormatCurrencyPipe } from './pipes/formatCurrency.pipe';
 
 @NgModule({
   declarations: [
-    ReplacePipe
+    FormatCurrencyPipe
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDividerModule
+    MatDividerModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
-    ReplacePipe
+    MatProgressSpinnerModule,
+    FormatCurrencyPipe
   ]
 })
 export class SharedModule { }

@@ -30,4 +30,9 @@ export class SearchingBarComponent implements OnInit {
     }
   }
 
+  onClickML(){
+    this.formSearch.controls['query'].setValue('');
+    this.router.navigate(['/']);
+  }
+
 }

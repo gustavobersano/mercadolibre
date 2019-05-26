@@ -1,4 +1,9 @@
 <div class="d-flex flex-column offset-md-1 col-md-10 list" *ngFor="let item of items">
-  <app-searching-item class="container-fluid" [item]=item></app-searching-item> 
-  <mat-divider class="divider"></mat-divider>
+  <div *ngIf="!loading">
+    <app-searching-item class="container-fluid" [item]=item></app-searching-item>
+    <mat-divider class="divider"></mat-divider>
+  </div>
+  <div *ngIf="loading" class="d-flex justify-content-center">
+    <mat-spinner class="spinner" [diameter]="25"></mat-spinner>
+  </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="d-flex flex-row align-items-center general">
-  <div class="d-flex align-items-center col-2 offset-md-1 col-md-1 image">
+  <div class="d-flex align-items-center col-2 offset-md-1 col-md-1 image" (click)="onClickML()">
     <img src="/assets/image/Logo_ML.png" alt="Logo Mercado Libre" srcset="/assets/image/Logo_ML.png 2x" class="img-fluid logo">
   </div>
   <form [formGroup]="formSearch" class="d-flex flex-column col-9 col-md-9 formulario" (ngSubmit)="onSubmit()">
