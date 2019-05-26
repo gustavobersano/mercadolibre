@@ -20,7 +20,7 @@ export class SearchingItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick(id: number) {
+  onClick(id: string) {
     this.router.navigate(['items', id]);
   }
 

@@ -11,7 +11,7 @@ import { SearchService } from '../../module-shared/services/search.service';
 })
 export class SearchingBarComponent implements OnInit {
 
-  private formSearch: FormGroup;
+  formSearch: FormGroup;
 
   constructor(private router: Router,
     private searchService: SearchService) { }

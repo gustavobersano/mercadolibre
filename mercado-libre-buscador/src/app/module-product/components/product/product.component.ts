@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ItemService } from '../../../module-shared/services/item.service';
 // Models
 import { Item } from '../../../module-shared/models/models';
+// Others
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-product',
@@ -17,12 +19,12 @@ export class ProductComponent implements OnInit {
   private loading: boolean;
 
   constructor(private route: ActivatedRoute,
-    private apiItemService: ItemService) { 
-      this.loading = true;
-    }
+    private apiItemService: ItemService) {
+    this.loading = true;
+  }
 
   ngOnInit() {
-    this.id = this.route.parent.params['value'].id;
+    this.id = _.get(this.route, ['parent', 'params', 'value', 'id'], '')
     if (this.id != '') {
       this.loading = true;
       this.apiItemService.getItemById(this.id).subscribe(response => {
@@ -31,16 +33,19 @@ export class ProductComponent implements OnInit {
       });
     }
 
-    this.route.parent.params.subscribe(params => {
-      this.id = params['id'];
-      if (this.id) {
-        this.loading = true;
-        this.apiItemService.getItemById(this.id).subscribe(response => {
-          this.item = response.item;
-          this.loading = false;
-        });
-      }
-    });
+    const params = _.get(this.route, ['parent', 'params'], null);
+    if (params) {
+      params.subscribe(params => {
+        this.id = params['id'];
+        if (this.id) {
+          this.loading = true;
+          this.apiItemService.getItemById(this.id).subscribe(response => {
+            this.item = response.item;
+            this.loading = false;
+          });
+        }
+      });
+    }
 
   }
 

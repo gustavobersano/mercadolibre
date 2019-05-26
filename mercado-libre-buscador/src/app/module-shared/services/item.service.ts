@@ -8,7 +8,7 @@ import { List, ItemSearch } from '../models/models';
     providedIn: 'root'
 })
 export class ItemService {
-
+    
     constructor(private http: HttpClient) { }
 
     getItems(query): Observable<List> {

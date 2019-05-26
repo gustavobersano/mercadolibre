@@ -1,16 +1,36 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule, TranslateStore } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
+// Material
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+// Components
+import { HomeComponent } from './components/home/home.component';
+import { SearchingBarComponent } from './components/searching-bar/searching-bar.component';
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        TranslateModule.forChild(),
+        // Material
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        // Components
+        HomeComponent,
+        SearchingBarComponent
       ],
+      providers: [
+        TranslateStore
+      ]
     }).compileComponents();
   }));
 
@@ -20,16 +40,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'mercado-libre-buscador'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('mercado-libre-buscador');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to mercado-libre-buscador!');
-  });
 });

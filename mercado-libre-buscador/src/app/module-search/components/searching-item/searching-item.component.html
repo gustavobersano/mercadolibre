@@ -4,7 +4,7 @@
     <div class="primary-line d-flex justify-content-between">
       <span class="d-flex col-7 amount">
         {{ item?.price?.amount | currency:item?.price?.currency:'symbol-narrow':'1.0-0' | formatCurrency }}
-        <div *ngIf="item.free_shipping" class='d-flex align-items-center imageShipping'>
+        <div *ngIf="item?.free_shipping" class='d-flex align-items-center imageShipping'>
           <img class="d-flex img-fluid" src="/assets/image/ic_shipping.png" alt="Logo Free Shipping" srcset="/assets/image/ic_shipping.png 2x">
         </div>
       </span>
